@@ -32,13 +32,10 @@
                 /* PAIN */
                 /* but it looks cool */
                 transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55),
-                /* transform 0.8s ease, */
                 grid-template-columns 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55),
-                /* grid-template-columns 0.8s ease, */
                 grid-template-rows 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55),
-                /* grid-template-rows 0.8s ease, */
                 gap 0.8s ease;
-            transform: rotate(45deg);
+            transform: rotate(0deg);
         }
 
         .item {
@@ -51,6 +48,18 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 
             transition: background-color 0.8s ease, font-size 0.8s ease;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+                filter: hue-rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+                filter: hue-rotate(840deg);
+            }
         }
 
         .item-1 {
@@ -97,7 +106,7 @@
 
         @media (max-width: 768px) {
             .shape-container {
-                transform: rotate(0deg);
+                animation: spin 0.5s linear infinite;
                 grid-template-columns: repeat(3, 140px);
                 grid-template-rows: repeat(3, 140px);
                 gap: 6px;
@@ -130,6 +139,7 @@
 
         @media (max-width: 480px) {
             .shape-container {
+                animation: spin 1s linear infinite;
                 grid-template-columns: repeat(3, 90px);
                 grid-template-rows: repeat(3, 90px);
                 gap: 4px;
