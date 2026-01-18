@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task_03</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            font-family: sans-serif;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            min-height: calc(100vh - 20px);
+            grid-template-rows:
+                auto auto 1fr auto auto;
+            grid-template-areas:
+                "hd"
+                "sn"
+                "mc"
+                "sb"
+                "ft";
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 0;
+            }
+
+            .container {
+                height: 100vh;
+                min-height: 0;
+                padding: 10px;
+                /* After testing some values this achives the best result */
+                grid-template-columns: 200px 1fr 200px;
+                grid-template-rows: auto 1fr auto;
+
+                grid-template-areas:
+                    "hd hd hd"
+                    "sn mc sb"
+                    "ft ft ft";
+            }
+        }
+
+        .header {
+            grid-area: hd;
+            background-color: #506bb4;
+            min-height: 80px;
+        }
+
+        .sidenav {
+            grid-area: sn;
+            background-color: #b45a2b;
+            min-height: 100px;
+        }
+
+        .main-content {
+            grid-area: mc;
+            background-color: #7da439;
+            min-height: 150px;
+        }
+
+        .sidebar {
+            grid-area: sb;
+            background-color: #b45a2b;
+            min-height: 100px;
+        }
+
+        .footer {
+            grid-area: ft;
+            background-color: #506bb4;
+            min-height: 80px;
+        }
+
+        .grid-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="grid-item header">Header</header>
+        <nav class="grid-item sidenav">Sidenav</nav>
+        <main class="grid-item main-content">Main Content</main>
+        <aside class="grid-item sidebar">Sidebar</aside>
+        <footer class="grid-item footer">Footer</footer>
+    </div>
+
+</body>
+
+</html>
