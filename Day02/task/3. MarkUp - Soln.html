@@ -1,0 +1,391 @@
+﻿<!doctype html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Flower Blog">
+    <meta name="author" content="Mads Kjaer">
+
+    <title>The Flower Blog</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #F0F0F0;
+            font-family: Helvetica, Arial, sans-serif;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Branding Colors */
+        .text-flower-light {
+            color: #d9f499;
+        }
+
+        /* Navbar Customization */
+        .navbar {
+            background-color: #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            color: #ccc !important;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #fff !important;
+        }
+
+        .btn-subscribe {
+            color: #fff;
+            background-color: #f68b1f;
+            /* RSS orange */
+            border: none;
+        }
+
+        .btn-subscribe:hover {
+            background-color: #e07a10;
+            color: #fff;
+        }
+
+        .hero-section {
+            border-radius: 1rem;
+            position: relative;
+            overflow: hidden;
+
+            background-color: #467612;
+            background-image: url("images/intro_flower.png"), url("images/intro_background.png");
+            background-repeat: no-repeat, repeat-x;
+            background-position: right bottom, left top;
+            background-size: contain, auto;
+
+            min-height: 350px;
+        }
+
+        @media (max-width: 767px) {
+            .hero-section {
+                background-position: center bottom, left top;
+                background-size: 80% auto, auto;
+                padding-bottom: 250px !important;
+            }
+        }
+
+        .blog-post-img {
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-section {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e0e0e0;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        footer {
+            background-color: #222;
+            color: #777;
+        }
+
+        footer h5 {
+            color: #fff;
+            margin-bottom: 1.2rem;
+            border-bottom: 2px solid #467612;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        footer a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        [data-bs-theme="dark"] body {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        [data-bs-theme="dark"] .sidebar-section {
+            background-color: #212529;
+            /* Darker gray */
+            border-color: #373b3e;
+        }
+
+        [data-bs-theme="dark"] .sidebar-section a {
+            color: #81b0ff;
+            /* Lighter link color for dark background */
+        }
+
+        [data-bs-theme="dark"] .list-group-item {
+            background-color: #212529;
+            color: #e0e0e0;
+            border-color: #373b3e;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="#">
+                <i class="fas fa-leaf text-success"></i> The Flower Blog
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Archives</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                        <a class="btn btn-sm btn-subscribe rounded-pill px-3" href="#">
+                            <i class="fas fa-rss"></i> Subscribe
+                        </a>
+                    </li>
+                    <!-- Dark Mode Toggle -->
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                        <button class="btn btn-sm btn-outline-light rounded-circle" id="darkModeToggle"
+                            title="Toggle Dark Mode">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+
+        <section class="hero-section p-4 p-md-5 mb-5 text-white d-flex align-items-center">
+            <div class="row w-100">
+                <div class="col-md-7">
+                    <h1 class="display-5 fw-bold">Do you love flowers as much as we do?</h1>
+                    <p class="lead text-flower-light">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="row">
+            <div class="col-lg-8">
+
+                <article class="blog-post mb-5">
+                    <header class="mb-3">
+                        <h2 class="blog-post-title display-6 fw-bold">This is the title of a blog post</h2>
+                        <p class="blog-post-meta text-muted">
+                            <i class="far fa-calendar-alt"></i> June 29th 2009 by <a href="#"
+                                class="text-decoration-none">Mads Kjaer</a>
+                        </p>
+                    </header>
+
+                    <div class="blog-content">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod tellus eu
+                            orci imperdiet nec rutrum lacus blandit. Cras enim nibh, sodales ultricies elementum
+                            vel, fermentum id tellus. Proin metus odio, ultricies eu pharetra dictum, laoreet
+                            id odio.
+                        </p>
+
+                        <figure class="figure w-100 text-center my-3">
+                            <img src="images/flower.png" class="figure-img img-fluid blog-post-img" alt="Flower Detail">
+                            <figcaption class="figure-caption text-center fst-italic">This is a beautiful flower
+                            </figcaption>
+                        </figure>
+
+                        <p>
+                            Pellentesque ut sapien arcu, egestas mollis massa. Fusce lectus leo, fringilla at
+                            aliquet sit amet, volutpat non erat. Aenean molestie nibh vitae turpis venenatis
+                            vel accumsan nunc tincidunt. Suspendisse id purus vel felis auctor mattis non ac
+                            erat.
+                        </p>
+                        <p>
+                            Vivamus vitae nulla dolor. Suspendisse eu lacinia justo. Vestibulum a felis ante,
+                            non aliquam leo. Aliquam eleifend, est viverra semper luctus, metus purus commodo
+                            elit, a elementum nisi lectus vel magna.
+                        </p>
+                    </div>
+                </article>
+
+                <hr class="my-5">
+
+                <section class="card mb-5">
+                    <div class="card-body p-4">
+                        <h3 class="card-title mb-4">Post a comment</h3>
+                        <form action="#" method="post">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name" name="name"
+                                            placeholder="Your Name" required>
+                                        <label for="name">Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" name="email"
+                                            placeholder="name@example.com" required>
+                                        <label for="email">E-mail</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="url" class="form-control" id="website" name="website"
+                                            placeholder="https://">
+                                        <label for="website">Website (Optional)</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Leave a comment here" id="comment"
+                                            name="comment" style="height: 150px" required></textarea>
+                                        <label for="comment">Comment</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-success btn-lg w-100 w-md-auto">Post
+                                        Comment</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+            </div>
+            <!-- Sidebar -->
+            <aside class="col-lg-4 ps-lg-5">
+
+                <div class="sidebar-section shadow-sm">
+                    <h4 class="mb-3">Categories</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none link-dark"><i
+                                    class="fas fa-angle-right text-success me-2"></i>Lorem ipsum dolor</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none link-dark"><i
+                                    class="fas fa-angle-right text-success me-2"></i>Sit amet consectetur</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none link-dark"><i
+                                    class="fas fa-angle-right text-success me-2"></i>Adipisicing elit sed</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none link-dark"><i
+                                    class="fas fa-angle-right text-success me-2"></i>Do eiusmod tempor</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none link-dark"><i
+                                    class="fas fa-angle-right text-success me-2"></i>Incididunt ut labore</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section shadow-sm">
+                    <h4 class="mb-3">Archives</h4>
+                    <div class="list-group list-group-flush">
+                        <a href="#"
+                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            June 2009 <span class="badge bg-success rounded-pill">14</span>
+                        </a>
+                        <a href="#"
+                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            May 2009 <span class="badge bg-secondary rounded-pill">2</span>
+                        </a>
+                        <a href="#"
+                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            April 2009 <span class="badge bg-secondary rounded-pill">1</span>
+                        </a>
+                        <a href="#"
+                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            March 2009 <span class="badge bg-secondary rounded-pill">5</span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+        </div>
+    </div>
+
+    <footer class="py-5 mt-auto">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5>About</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Blogroll</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#">NETTUTS+</a></li>
+                        <li class="mb-2"><a href="#">FreelanceSwitch</a></li>
+                        <li class="mb-2"><a href="#">In The Woods</a></li>
+                        <li class="mb-2"><a href="#">Netsetter</a></li>
+                        <li class="mb-2"><a href="#">PSDTUTS+</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Popular</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#">This is the title of a blog post</a></li>
+                        <li class="mb-2"><a href="#">Lorem ipsum dolor sit amet</a></li>
+                        <li class="mb-2"><a href="#">Consectetur adipisicing elit</a></li>
+                        <li class="mb-2"><a href="#">Duis aute irure dolor</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-4 pt-4 border-top border-secondary">
+                <div class="col-12 text-center small">
+                    &copy; 2024 The Flower Blog. Created by Mads Kjaer. Remixed with Bootstrap.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const toggleButton = document.getElementById('darkModeToggle');
+        const toggleIcon = toggleButton.querySelector('i');
+        const htmlElement = document.documentElement;
+
+        toggleButton.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            htmlElement.setAttribute('data-bs-theme', newTheme);
+
+            // Toggle Icon
+            if (newTheme === 'dark') {
+                toggleIcon.classList.remove('fa-moon');
+                toggleIcon.classList.add('fa-sun');
+            } else {
+                toggleIcon.classList.remove('fa-sun');
+                toggleIcon.classList.add('fa-moon');
+            }
+        });
+    </script>
+</body>
+
+</html>
